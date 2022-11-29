@@ -9,8 +9,8 @@ const StyledHeader = styled.div`
   align-items: center;
   width: 100%;
   height: 50px;
+  margin: 4px 0 20px 0;
   border-radius: 8px;
-  margin-top: 4px;
   box-shadow: 0px 1px 4px 2px rgba(0, 0, 0, 0.12);
   .title {
     padding: 10px;
