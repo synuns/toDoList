@@ -4,13 +4,18 @@ import Button from '../common/Button';
 import Input from '../common/Input';
 
 const FormBox = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
-  padding: 12px;
+  margin-bottom: 20px;
   border-radius: 8px;
   box-shadow: 0px 1px 4px 2px rgba(0, 0, 0, 0.12);
+
+  Button {
+    margin-right: 20px;
+  }
 `;
 
 const InputBox = styled.div`
@@ -18,6 +23,7 @@ const InputBox = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  margin-left: 20px;
 `;
 
 function InputForm() {

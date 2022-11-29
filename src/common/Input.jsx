@@ -12,7 +12,7 @@ const StyledInput = styled.div`
     width: 100%;
     height: 25px;
     border: none;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 2px solid #c4c4c4;
   }
 
   input:focus,
@@ -22,6 +22,7 @@ const StyledInput = styled.div`
   }
 
   label {
+    color: #b4b4b4;
     position: absolute;
     top: 57%;
     left: 0;
@@ -30,6 +31,7 @@ const StyledInput = styled.div`
 
   input:focus + label,
   input.has-content + label {
+    color: #3399ff;
     top: 33%;
     transition: 0.2s ease-out;
     font-size: 12px;
