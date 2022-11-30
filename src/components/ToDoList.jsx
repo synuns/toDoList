@@ -28,7 +28,21 @@ const ToDoList = ({ data, onRemove, onToggle }) => {
   return (
     <ToDoBox>
       <h1 className="subtitle">🔥Working🔥</h1>
-      <CardList>
+      {toDos.length !== 0 ? (
+        <CardList>
+          {toDos.map((toDo) => (
+            <ToDoCard
+              data={toDo}
+              key={toDo.id}
+              onRemove={onRemove}
+              onToggle={onToggle}
+            />
+          ))}
+        </CardList>
+      ) : (
+        <Empty>할 일을 작성해보세요!</Empty>
+      )}
+      {/* <CardList>
         {toDos &&
           toDos.map((toDo) => (
             <ToDoCard
@@ -38,11 +52,11 @@ const ToDoList = ({ data, onRemove, onToggle }) => {
               onToggle={onToggle}
             />
           ))}
-      </CardList>
+      </CardList> */}
       <h1 className="subtitle">😎Done😎</h1>
-      <CardList>
-        {dones &&
-          dones.map((done) => (
+      {dones.length !== 0 ? (
+        <CardList>
+          {dones.map((done) => (
             <ToDoCard
               data={done}
               key={done.id}
@@ -50,8 +64,10 @@ const ToDoList = ({ data, onRemove, onToggle }) => {
               onToggle={onToggle}
             />
           ))}
-      </CardList>
-      <Empty>할 일을 작성해보세요!</Empty>
+        </CardList>
+      ) : (
+        <Empty>완료한 일이 없어요</Empty>
+      )}
     </ToDoBox>
   );
 };
