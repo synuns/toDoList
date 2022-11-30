@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyledInput = styled.div`
   width: 100%;
-  max-width: 300px;
+  max-width: 400px;
   padding-top: 35px;
   margin: 0 20px 20px 20px;
   position: relative;
@@ -38,7 +38,7 @@ const StyledInput = styled.div`
   }
 `;
 
-function Input({ name, id }) {
+function Input({ name, id, onChange, value }) {
   const [hasContent, setHasContent] = useState(false);
 
   const handleFloat = (event) => {
@@ -57,6 +57,8 @@ function Input({ name, id }) {
         placeholder=""
         onBlur={handleFloat}
         className={hasContent ? 'has-content' : ''}
+        onChange={onChange}
+        value={value}
       />
       <label htmlFor={id} className="label">
         {name}

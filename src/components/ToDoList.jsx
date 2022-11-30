@@ -20,7 +20,7 @@ const CardList = styled.div`
   margin-bottom: 20px;
 `;
 
-const ToDoList = ({ data }) => {
+const ToDoList = ({ data, onRemove, onToggle }) => {
   const toDos = data.filter((data) => !data.isDone);
   const dones = data.filter((data) => data.isDone);
 
@@ -29,13 +29,23 @@ const ToDoList = ({ data }) => {
       <h1 className="subtitle">🔥Working🔥</h1>
       <CardList>
         {toDos.map((toDo) => (
-          <ToDoCard data={toDo} key={toDo.id} />
+          <ToDoCard
+            data={toDo}
+            key={toDo.id}
+            onRemove={onRemove}
+            onToggle={onToggle}
+          />
         ))}
       </CardList>
       <h1 className="subtitle">😎Done😎</h1>
       <CardList>
         {dones.map((done) => (
-          <ToDoCard data={done} key={done.id} />
+          <ToDoCard
+            data={done}
+            key={done.id}
+            onRemove={onRemove}
+            onToggle={onToggle}
+          />
         ))}
       </CardList>
     </ToDoBox>

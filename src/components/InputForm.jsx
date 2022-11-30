@@ -26,14 +26,14 @@ const InputBox = styled.div`
   margin-left: 20px;
 `;
 
-function InputForm() {
+function InputForm({ title, content, onChange, onCreate }) {
   return (
     <FormBox>
       <InputBox>
-        <Input name="제목" id="title" />
-        <Input name="내용" id="content" />
+        <Input name="제목" id="title" onChange={onChange} value={title} />
+        <Input name="내용" id="content" onChange={onChange} value={content} />
       </InputBox>
-      <Button>추가하기</Button>
+      <Button onClick={() => onCreate()}>추가하기</Button>
     </FormBox>
   );
 }

@@ -32,9 +32,9 @@ const StyledBtn = styled.button`
   }
 `;
 
-const Button = ({ color, children }) => {
+const Button = ({ color, children, onClick }) => {
   return (
-    <StyledBtn color={color}>
+    <StyledBtn color={color} onClick={onClick}>
       <span>{children}</span>
     </StyledBtn>
   );
