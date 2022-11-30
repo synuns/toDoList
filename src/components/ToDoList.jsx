@@ -2,15 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import Empty from './Empty';
 import ToDoCard from './ToDoCard';
+import Subtitle from '../common/Subtitle';
 
 const ToDoBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  .subtitle {
-    font-size: 24px;
-  }
 `;
 
 const CardList = styled.div`
@@ -27,7 +25,7 @@ const ToDoList = ({ data, onRemove, onToggle }) => {
 
   return (
     <ToDoBox>
-      <h1 className="subtitle">🔥Working🔥</h1>
+      <Subtitle>🔥Working🔥</Subtitle>
       {toDos.length !== 0 ? (
         <CardList>
           {toDos.map((toDo) => (
@@ -42,18 +40,7 @@ const ToDoList = ({ data, onRemove, onToggle }) => {
       ) : (
         <Empty>할 일을 작성해보세요!</Empty>
       )}
-      {/* <CardList>
-        {toDos &&
-          toDos.map((toDo) => (
-            <ToDoCard
-              data={toDo}
-              key={toDo.id}
-              onRemove={onRemove}
-              onToggle={onToggle}
-            />
-          ))}
-      </CardList> */}
-      <h1 className="subtitle">😎Done😎</h1>
+      <Subtitle>😎Done😎</Subtitle>
       {dones.length !== 0 ? (
         <CardList>
           {dones.map((done) => (
