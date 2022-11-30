@@ -3,14 +3,8 @@ import styled from 'styled-components';
 import Button from '../common/Button';
 
 const StyledCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 270px;
-  width: 100%;
-  margin: 30px 15px 0 15px;
   border-radius: 8px;
   box-shadow: 0px 1px 4px 2px rgba(0, 0, 0, 0.12);
-
   .title {
     font-size: 24px;
     margin: 30px 20px 0 20px;

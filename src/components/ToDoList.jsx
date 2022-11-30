@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Empty from './Empty';
 import ToDoCard from './ToDoCard';
 
 const ToDoBox = styled.div`
@@ -13,11 +14,11 @@ const ToDoBox = styled.div`
 `;
 
 const CardList = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, max-content));
+  grid-gap: 16px;
+  justify-content: center;
+  margin: 30px 0;
 `;
 
 const ToDoList = ({ data, onRemove, onToggle }) => {
@@ -50,6 +51,7 @@ const ToDoList = ({ data, onRemove, onToggle }) => {
             />
           ))}
       </CardList>
+      <Empty>할 일을 작성해보세요!</Empty>
     </ToDoBox>
   );
 };
