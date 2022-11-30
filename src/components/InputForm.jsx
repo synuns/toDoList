@@ -19,7 +19,7 @@ const FormBox = styled.div`
 `;
 
 const InputBox = styled.div`
-  width: 80%;
+  width: 70%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -33,7 +33,7 @@ function InputForm({ title, content, onChange, onCreate }) {
         <Input name="제목" id="title" onChange={onChange} value={title} />
         <Input name="내용" id="content" onChange={onChange} value={content} />
       </InputBox>
-      <Button onClick={() => onCreate()}>추가하기</Button>
+      <Button onClick={() => onCreate()}>추가</Button>
     </FormBox>
   );
 }

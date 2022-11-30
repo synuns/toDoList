@@ -26,6 +26,7 @@ const StyledInput = styled.div`
     position: absolute;
     top: 57%;
     left: 0;
+    transition: 0.2s ease-out;
     cursor: text;
   }
 

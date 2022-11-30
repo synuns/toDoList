@@ -43,7 +43,7 @@ function App() {
         content: '',
       });
     } else {
-      alert('입력값을 올바르게 입력해주세요.');
+      alert('할 일을 정확히 입력해주세요!');
     }
   };
 
