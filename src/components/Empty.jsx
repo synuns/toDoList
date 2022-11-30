@@ -11,7 +11,7 @@ const StyledEmpty = styled.div`
   margin: 30px 0;
 
   img {
-    width: 140px;
+    width: 110px;
     margin: 20px 0;
   }
 
