@@ -9,8 +9,6 @@ const StyledEmpty = styled.div`
   align-items: center;
   width: 100%;
   margin: 30px 0;
-  border-radius: 8px;
-  box-shadow: 0px 1px 4px 2px rgba(0, 0, 0, 0.12);
 
   img {
     width: 140px;
