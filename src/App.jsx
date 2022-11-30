@@ -27,20 +27,24 @@ function App() {
   };
 
   const handleCreate = () => {
-    const todo = {
-      id: getDate(),
-      title,
-      content,
-      isDone: false,
-    };
+    if (title && content) {
+      const todo = {
+        id: getDate(),
+        title,
+        content,
+        isDone: false,
+      };
 
-    const createdTodos = [...todos, todo];
-    saveTodos(createdTodos);
+      const createdTodos = [...todos, todo];
+      saveTodos(createdTodos);
 
-    setInputs({
-      title: '',
-      content: '',
-    });
+      setInputs({
+        title: '',
+        content: '',
+      });
+    } else {
+      alert('입력값을 올바르게 입력해주세요.');
+    }
   };
 
   const handleRemove = (id) => {
