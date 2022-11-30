@@ -28,25 +28,27 @@ const ToDoList = ({ data, onRemove, onToggle }) => {
     <ToDoBox>
       <h1 className="subtitle">🔥Working🔥</h1>
       <CardList>
-        {toDos.map((toDo) => (
-          <ToDoCard
-            data={toDo}
-            key={toDo.id}
-            onRemove={onRemove}
-            onToggle={onToggle}
-          />
-        ))}
+        {toDos &&
+          toDos.map((toDo) => (
+            <ToDoCard
+              data={toDo}
+              key={toDo.id}
+              onRemove={onRemove}
+              onToggle={onToggle}
+            />
+          ))}
       </CardList>
       <h1 className="subtitle">😎Done😎</h1>
       <CardList>
-        {dones.map((done) => (
-          <ToDoCard
-            data={done}
-            key={done.id}
-            onRemove={onRemove}
-            onToggle={onToggle}
-          />
-        ))}
+        {dones &&
+          dones.map((done) => (
+            <ToDoCard
+              data={done}
+              key={done.id}
+              onRemove={onRemove}
+              onToggle={onToggle}
+            />
+          ))}
       </CardList>
     </ToDoBox>
   );

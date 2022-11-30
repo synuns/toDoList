@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TopBar from './components/TopBar';
 import Layout from './common/Layout';
 import Container from './common/Container';
 import InputForm from './components/InputForm';
 import ToDoList from './components/ToDoList';
 import { getDate } from './utils/date';
+
+const TODOS_KEY = 'todos';
 
 const mockToDo = [
   {
@@ -47,7 +49,7 @@ function App() {
 
   const { title, content } = inputs;
 
-  const [todos, setTodos] = useState(mockToDo);
+  const [todos, setTodos] = useState([]);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -65,7 +67,8 @@ function App() {
       isDone: false,
     };
 
-    setTodos([...todos, todo]);
+    const createdTodos = [...todos, todo];
+    saveTodos(createdTodos);
 
     setInputs({
       title: '',
@@ -74,16 +77,34 @@ function App() {
   };
 
   const handleRemove = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    const removedTodos = todos?.filter((todo) => todo.id !== id);
+    saveTodos(removedTodos);
   };
 
   const handleToggle = (id) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, isDone: !todo.isDone } : todo,
-      ),
+    const toggledTodos = todos?.map((todo) =>
+      todo.id === id ? { ...todo, isDone: !todo.isDone } : todo,
     );
+    saveTodos(toggledTodos);
   };
+
+  const saveTodos = (todos) => {
+    localStorage.setItem(TODOS_KEY, JSON.stringify(todos));
+    setTodos(todos);
+  };
+
+  const loadTodos = () => {
+    const savedTodos = localStorage.getItem(TODOS_KEY);
+
+    if (savedTodos) {
+      const parsedTodos = JSON.parse(savedTodos);
+      setTodos(parsedTodos);
+    }
+  };
+
+  useEffect(() => {
+    loadTodos();
+  }, []);
 
   return (
     <Layout>
