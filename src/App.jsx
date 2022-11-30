@@ -1,34 +1,96 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import React, { useEffect, useState } from 'react';
+import TopBar from './components/TopBar';
+import Layout from './common/Layout';
+import Container from './common/Container';
+import InputForm from './components/InputForm';
+import ToDoList from './components/ToDoList';
+import { getDate } from './utils/date';
+
+const TODOS_KEY = 'todos';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [inputs, setInputs] = useState({
+    title: '',
+    content: '',
+  });
+
+  const { title, content } = inputs;
+
+  const [todos, setTodos] = useState([]);
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setInputs({
+      ...inputs,
+      [id]: value,
+    });
+  };
+
+  const handleCreate = () => {
+    const todo = {
+      id: getDate(),
+      title,
+      content,
+      isDone: false,
+    };
+
+    const createdTodos = [...todos, todo];
+    saveTodos(createdTodos);
+
+    setInputs({
+      title: '',
+      content: '',
+    });
+  };
+
+  const handleRemove = (id) => {
+    const removedTodos = todos?.filter((todo) => todo.id !== id);
+    saveTodos(removedTodos);
+  };
+
+  const handleToggle = (id) => {
+    const toggledTodos = todos?.map((todo) =>
+      todo.id === id ? { ...todo, isDone: !todo.isDone } : todo,
+    );
+    saveTodos(toggledTodos);
+  };
+
+  const saveTodos = (todos) => {
+    localStorage.setItem(TODOS_KEY, JSON.stringify(todos));
+    setTodos(todos);
+  };
+
+  const loadTodos = () => {
+    const savedTodos = localStorage.getItem(TODOS_KEY);
+
+    if (savedTodos) {
+      const parsedTodos = JSON.parse(savedTodos);
+      setTodos(parsedTodos);
+    }
+  };
+
+  useEffect(() => {
+    loadTodos();
+  }, []);
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <Layout>
+      <Container>
+        <TopBar />
+        <InputForm
+          title={title}
+          content={content}
+          onChange={handleChange}
+          onCreate={handleCreate}
+        />
+        <ToDoList
+          data={todos}
+          onRemove={handleRemove}
+          onToggle={handleToggle}
+        />
+      </Container>
+    </Layout>
+  );
 }
 
-export default App
+export default App;
