@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Empty from './Empty';
 import ToDoCard from './ToDoCard';
 import Subtitle from '../common/Subtitle';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleToDo, deleteToDo } from '../redux/modules/toDoList';
 
 const ToDoBox = styled.div`
   display: flex;
@@ -19,21 +21,31 @@ const CardList = styled.div`
   margin: 30px 0;
 `;
 
-const ToDoList = ({ data, onRemove, onToggle }) => {
-  const toDos = data.filter((data) => !data.isDone);
-  const dones = data.filter((data) => data.isDone);
+const ToDoList = () => {
+  const dispatch = useDispatch();
+  const toDos = useSelector((state) => state.toDoList);
+  const finished = toDos.filter((data) => data.isDone);
+  const notFinished = toDos.filter((data) => !data.isDone);
+
+  const handleToggle = (id) => {
+    dispatch(toggleToDo(id));
+  };
+
+  const handleDelete = (id) => {
+    dispatch(deleteToDo(id));
+  };
 
   return (
     <ToDoBox>
       <Subtitle>🔥Working🔥</Subtitle>
-      {toDos.length !== 0 ? (
+      {notFinished.length !== 0 ? (
         <CardList>
-          {toDos.map((toDo) => (
+          {notFinished.map((toDo) => (
             <ToDoCard
               data={toDo}
               key={toDo.id}
-              onRemove={onRemove}
-              onToggle={onToggle}
+              onToggle={handleToggle}
+              onDelete={handleDelete}
             />
           ))}
         </CardList>
@@ -41,14 +53,14 @@ const ToDoList = ({ data, onRemove, onToggle }) => {
         <Empty>할 일을 작성해보세요!</Empty>
       )}
       <Subtitle>😎Done😎</Subtitle>
-      {dones.length !== 0 ? (
+      {finished.length !== 0 ? (
         <CardList>
-          {dones.map((done) => (
+          {finished.map((toDo) => (
             <ToDoCard
-              data={done}
-              key={done.id}
-              onRemove={onRemove}
-              onToggle={onToggle}
+              data={toDo}
+              key={toDo.id}
+              onToggle={handleToggle}
+              onDelete={handleDelete}
             />
           ))}
         </CardList>

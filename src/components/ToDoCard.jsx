@@ -27,13 +27,13 @@ const Actions = styled.div`
   }
 `;
 
-function ToDoCard({ data, onRemove, onToggle }) {
+function ToDoCard({ data, onToggle, onDelete }) {
   return (
     <StyledCard id={data.id}>
       <h1 className="title">{data.title}</h1>
       <h3 className="content">{data.content}</h3>
       <Actions>
-        <Button color="#d32f2f" onClick={() => onRemove(data.id)}>
+        <Button color="#d32f2f" onClick={() => onDelete(data.id)}>
           삭제
         </Button>
         {data.isDone ? (

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import Button from '../common/Button';
 import Input from '../common/Input';
+import { createToDo } from '../redux/modules/toDoList';
+import { v4 as uuidv4 } from 'uuid';
 
 const FormBox = styled.div`
   width: 100%;
@@ -26,14 +29,55 @@ const InputBox = styled.div`
   margin-left: 20px;
 `;
 
-function InputForm({ title, content, onChange, onCreate }) {
+function InputForm() {
+  const dispatch = useDispatch();
+  const [inputs, setInputs] = useState({
+    title: '',
+    content: '',
+  });
+
+  const { title, content } = inputs;
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setInputs({
+      ...inputs,
+      [id]: value,
+    });
+  };
+
+  const handleCreate = () => {
+    if (title && content) {
+      const toDo = {
+        id: uuidv4(),
+        title,
+        content,
+        isDone: false,
+      };
+
+      dispatch(createToDo(toDo));
+
+      setInputs({
+        title: '',
+        content: '',
+      });
+    } else {
+      alert('할 일을 정확히 입력해주세요!');
+    }
+  };
+
   return (
     <FormBox>
       <InputBox>
-        <Input name="제목" id="title" onChange={onChange} value={title} />
-        <Input name="내용" id="content" onChange={onChange} value={content} />
+        <Input name="제목" id="title" onChange={handleChange} value={title} />
+        <Input
+          name="내용"
+          id="content"
+          onChange={handleChange}
+          value={content}
+        />
       </InputBox>
-      <Button onClick={() => onCreate()}>추가</Button>
+      <Button onClick={handleCreate}>추가</Button>
     </FormBox>
   );
 }
