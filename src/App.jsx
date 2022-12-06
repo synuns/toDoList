@@ -5,6 +5,7 @@ import Container from './common/Container';
 import InputForm from './components/InputForm';
 import ToDoList from './components/ToDoList';
 import { getDate } from './utils/date';
+import { useDispatch, useSelector } from 'react-redux';
 
 const TODOS_KEY = 'todos';
 
@@ -15,6 +16,10 @@ function App() {
   });
 
   const { title, content } = inputs;
+
+  const dispatch = useDispatch();
+  const toDos = useSelector((state) => state.toDoList.toDos);
+  console.log(toDos);
 
   const [todos, setTodos] = useState([]);
 
@@ -37,7 +42,6 @@ function App() {
 
       const createdTodos = [...todos, todo];
       saveTodos(createdTodos);
-
       setInputs({
         title: '',
         content: '',
