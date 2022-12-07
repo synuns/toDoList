@@ -123,19 +123,19 @@ const Details = () => {
             <span className="createdBy">{toDo.createdBy}</span>
             <ButtonArea>
               {toDo.isDone ? (
-                <Tooltip message="완료">
-                  <IconButton
-                    onClick={() => handleToggle(toDo.id)}
-                    src={CheckIcon}
-                    name="check"
-                  />
-                </Tooltip>
-              ) : (
                 <Tooltip message="취소">
                   <IconButton
                     onClick={() => handleToggle(toDo.id)}
                     src={RestoreIcon}
                     name="restore"
+                  />
+                </Tooltip>
+              ) : (
+                <Tooltip message="완료">
+                  <IconButton
+                    onClick={() => handleToggle(toDo.id)}
+                    src={CheckIcon}
+                    name="check"
                   />
                 </Tooltip>
               )}
