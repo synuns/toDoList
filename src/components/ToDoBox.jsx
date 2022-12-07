@@ -16,7 +16,7 @@ const StyledToDoBox = styled.div`
 const CardList = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, max-content));
-  grid-gap: 16px;
+  grid-gap: 20px;
   justify-content: center;
   margin: 30px 0;
 `;
