@@ -17,9 +17,17 @@ const StyledCard = styled(Link)`
     white-space: nowrap;
   }
   .content {
+    height: 45px;
     font-size: 18px;
     margin: 30px 20px 20px 20px;
     overflow-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    line-height: 1.2em;
   }
   .date {
     position: absolute;
