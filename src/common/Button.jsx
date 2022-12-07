@@ -33,8 +33,13 @@ const StyledBtn = styled.button`
 `;
 
 const Button = ({ color, children, onClick }) => {
+  const handleClick = (event) => {
+    event.preventDefault();
+    onClick();
+  };
+
   return (
-    <StyledBtn color={color} onClick={onClick}>
+    <StyledBtn color={color} onClick={handleClick}>
       <span>{children}</span>
     </StyledBtn>
   );
