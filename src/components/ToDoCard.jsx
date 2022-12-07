@@ -5,16 +5,28 @@ import Button from '../common/Button';
 import { elapsedTime } from '../utils/date';
 
 const StyledCard = styled(Link)`
+  position: relative;
   border-radius: 8px;
   box-shadow: 0px 1px 4px 2px rgba(0, 0, 0, 0.12);
   transition: 0.1s ease-out;
   .title {
     font-size: 24px;
     margin: 30px 20px 0 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .content {
     font-size: 18px;
     margin: 30px 20px 20px 20px;
+    overflow-wrap: break-word;
+  }
+  .date {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 14px;
+    color: #868e96;
   }
   &:hover {
     scale: 1.03;
