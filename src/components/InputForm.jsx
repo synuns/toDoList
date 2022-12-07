@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Button from '../common/Button';
 import Input from '../common/Input';
 import { createToDo } from '../redux/modules/toDoList';
-import { v4 as uuidv4 } from 'uuid';
+import { nanoid } from 'nanoid';
 
 const FormBox = styled.div`
   width: 100%;
@@ -47,9 +47,10 @@ function InputForm() {
   };
 
   const handleCreate = () => {
+    console.log(new Intl.DateTimeFormat('kr-ko').format(new Date()));
     if (title && content) {
       const toDo = {
-        id: uuidv4(),
+        id: nanoid(),
         title,
         content,
         isDone: false,
