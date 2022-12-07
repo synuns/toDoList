@@ -32,6 +32,7 @@ const Details = () => {
       <Subtitle>{toDo.title}</Subtitle>
       <div>{toDo.content}</div>
       <div>{toDo.isDone ? '완료' : '미완료'}</div>
+      <div>{toDo.createdBy}</div>
     </DetailBox>
   );
 };

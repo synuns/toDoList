@@ -5,6 +5,7 @@ import Button from '../common/Button';
 import Input from '../common/Input';
 import { createToDo } from '../redux/modules/toDoList';
 import { nanoid } from 'nanoid';
+import { currentTime } from '../utils/date';
 
 const FormBox = styled.div`
   width: 100%;
@@ -47,13 +48,14 @@ function InputForm() {
   };
 
   const handleCreate = () => {
-    console.log(new Intl.DateTimeFormat('kr-ko').format(new Date()));
+    // TODO createdBy with intl
     if (title && content) {
       const toDo = {
         id: nanoid(),
         title,
         content,
         isDone: false,
+        createdBy: currentTime(),
       };
 
       dispatch(createToDo(toDo));
@@ -70,9 +72,9 @@ function InputForm() {
   return (
     <FormBox>
       <InputBox>
-        <Input name="제목" id="title" onChange={handleChange} value={title} />
+        <Input label="제목" id="title" onChange={handleChange} value={title} />
         <Input
-          name="내용"
+          label="내용"
           id="content"
           onChange={handleChange}
           value={content}

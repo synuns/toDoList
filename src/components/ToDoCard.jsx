@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../common/Button';
+import { elapsedTime } from '../utils/date';
 
 const StyledCard = styled(Link)`
   border-radius: 8px;
@@ -37,6 +38,7 @@ function ToDoCard({ data, onToggle, onDelete }) {
     <StyledCard id={data.id} to={`details/${data.id}`}>
       <h1 className="title">{data.title}</h1>
       <h3 className="content">{data.content}</h3>
+      <span className="date">{elapsedTime(data.createdBy)}</span>
       <ButtonBox>
         <Button color="#d32f2f" onClick={() => onDelete(data.id)}>
           삭제
