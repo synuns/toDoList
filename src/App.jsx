@@ -10,6 +10,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<ToDoList />} />
+          <Route path="details" element={<Details />} />
           <Route path="details/:id" element={<Details />} />
         </Routes>
       </Layout>
