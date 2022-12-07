@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './common/Layout';
+import Details from './pages/Details';
 import ToDoList from './pages/ToDoList';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<ToDoList />} />
+          <Route path="details/:id" element={<Details />} />
         </Routes>
       </Layout>
     </BrowserRouter>

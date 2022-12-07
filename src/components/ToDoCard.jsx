@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../common/Button';
 
@@ -15,7 +16,7 @@ const StyledCard = styled.div`
   }
 `;
 
-const Actions = styled.div`
+const ButtonBox = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -30,22 +31,24 @@ const Actions = styled.div`
 function ToDoCard({ data, onToggle, onDelete }) {
   return (
     <StyledCard id={data.id}>
-      <h1 className="title">{data.title}</h1>
-      <h3 className="content">{data.content}</h3>
-      <Actions>
-        <Button color="#d32f2f" onClick={() => onDelete(data.id)}>
-          삭제
-        </Button>
-        {data.isDone ? (
-          <Button color="#ed6c02" onClick={() => onToggle(data.id)}>
-            취소
+      <Link to={`details/${data.id}`}>
+        <h1 className="title">{data.title}</h1>
+        <h3 className="content">{data.content}</h3>
+        <ButtonBox>
+          <Button color="#d32f2f" onClick={() => onDelete(data.id)}>
+            삭제
           </Button>
-        ) : (
-          <Button color="#2e7d32" onClick={() => onToggle(data.id)}>
-            완료
-          </Button>
-        )}
-      </Actions>
+          {data.isDone ? (
+            <Button color="#ed6c02" onClick={() => onToggle(data.id)}>
+              취소
+            </Button>
+          ) : (
+            <Button color="#2e7d32" onClick={() => onToggle(data.id)}>
+              완료
+            </Button>
+          )}
+        </ButtonBox>
+      </Link>
     </StyledCard>
   );
 }
