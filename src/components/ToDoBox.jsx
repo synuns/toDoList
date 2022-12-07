@@ -6,7 +6,7 @@ import Subtitle from '../common/Subtitle';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleToDo, deleteToDo } from '../redux/modules/toDoList';
 
-const ToDoBox = styled.div`
+const StyledToDoBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,13 +15,13 @@ const ToDoBox = styled.div`
 
 const CardList = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, max-content));
-  grid-gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 280px));
+  grid-gap: 20px;
   justify-content: center;
   margin: 30px 0;
 `;
 
-const ToDoList = () => {
+const ToDoBox = () => {
   const dispatch = useDispatch();
   const toDos = useSelector((state) => state.toDoList);
   const finished = toDos.filter((data) => data.isDone);
@@ -36,7 +36,7 @@ const ToDoList = () => {
   };
 
   return (
-    <ToDoBox>
+    <StyledToDoBox>
       <Subtitle>🔥Working🔥</Subtitle>
       {notFinished.length !== 0 ? (
         <CardList>
@@ -67,8 +67,8 @@ const ToDoList = () => {
       ) : (
         <Empty>완료한 일이 없어요</Empty>
       )}
-    </ToDoBox>
+    </StyledToDoBox>
   );
 };
 
-export default ToDoList;
+export default ToDoBox;

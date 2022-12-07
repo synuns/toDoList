@@ -1,10 +1,16 @@
-const addZero = (n) => {
-  return n < 10 ? '0' + n : n;
+import moment from "moment";
+import 'moment/dist/locale/ko';
+
+moment.locale('ko');
+
+const currentTime = () => {
+  const format = "YYYY-MM-DD HH:mm:ss";
+  const date = new Date();
+  return moment(date).format(format);
 }
 
-const getDate = () => {
-  var date = new Date();
-  return date.getFullYear().toString() + addZero(date.getMonth() + 1) + addZero( date.getDate()) + addZero( date.getHours() ) + addZero( date.getMinutes() ) + addZero(date.getSeconds());
+const elapsedTime = (date) => {
+  return moment(date).fromNow();
 }
 
-export { getDate };
+export { currentTime, elapsedTime };

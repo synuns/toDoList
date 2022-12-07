@@ -1,21 +1,47 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../common/Button';
+import { elapsedTime } from '../utils/date';
 
-const StyledCard = styled.div`
+const StyledCard = styled(Link)`
+  position: relative;
   border-radius: 8px;
   box-shadow: 0px 1px 4px 2px rgba(0, 0, 0, 0.12);
+  transition: 0.1s ease-out;
   .title {
     font-size: 24px;
     margin: 30px 20px 0 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .content {
+    height: 45px;
     font-size: 18px;
     margin: 30px 20px 20px 20px;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    line-height: 1.2em;
+  }
+  .date {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 14px;
+    color: #868e96;
+  }
+  &:hover {
+    scale: 1.03;
   }
 `;
 
-const Actions = styled.div`
+const ButtonBox = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -29,10 +55,11 @@ const Actions = styled.div`
 
 function ToDoCard({ data, onToggle, onDelete }) {
   return (
-    <StyledCard id={data.id}>
+    <StyledCard id={data.id} to={`details/${data.id}`}>
       <h1 className="title">{data.title}</h1>
       <h3 className="content">{data.content}</h3>
-      <Actions>
+      <span className="date">{elapsedTime(data.createdBy)}</span>
+      <ButtonBox>
         <Button color="#d32f2f" onClick={() => onDelete(data.id)}>
           삭제
         </Button>
@@ -45,7 +72,7 @@ function ToDoCard({ data, onToggle, onDelete }) {
             완료
           </Button>
         )}
-      </Actions>
+      </ButtonBox>
     </StyledCard>
   );
 }

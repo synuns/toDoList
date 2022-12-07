@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import Button from '../common/Button';
 import Input from '../common/Input';
 import { createToDo } from '../redux/modules/toDoList';
-import { v4 as uuidv4 } from 'uuid';
+import { nanoid } from 'nanoid';
+import { currentTime } from '../utils/date';
 
 const FormBox = styled.div`
   width: 100%;
@@ -47,12 +48,14 @@ function InputForm() {
   };
 
   const handleCreate = () => {
+    // TODO createdBy with intl
     if (title && content) {
       const toDo = {
-        id: uuidv4(),
+        id: nanoid(),
         title,
         content,
         isDone: false,
+        createdBy: currentTime(),
       };
 
       dispatch(createToDo(toDo));
@@ -69,9 +72,9 @@ function InputForm() {
   return (
     <FormBox>
       <InputBox>
-        <Input name="제목" id="title" onChange={handleChange} value={title} />
+        <Input label="제목" id="title" onChange={handleChange} value={title} />
         <Input
-          name="내용"
+          label="내용"
           id="content"
           onChange={handleChange}
           value={content}

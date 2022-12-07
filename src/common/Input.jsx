@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const StyledInput = styled.div`
@@ -39,7 +39,7 @@ const StyledInput = styled.div`
   }
 `;
 
-function Input({ name, id, onChange, value }) {
+function Input({ label, id, onChange, value }) {
   const [hasContent, setHasContent] = useState(false);
 
   const handleFloat = (event) => {
@@ -49,6 +49,14 @@ function Input({ name, id, onChange, value }) {
       setHasContent(false);
     }
   };
+
+  useEffect(() => {
+    if (value !== '') {
+      setHasContent(true);
+    } else {
+      setHasContent(false);
+    }
+  }, [value]);
 
   return (
     <StyledInput>
@@ -62,7 +70,7 @@ function Input({ name, id, onChange, value }) {
         value={value}
       />
       <label htmlFor={id} className="label">
-        {name}
+        {label}
       </label>
     </StyledInput>
   );
