@@ -4,7 +4,7 @@ import TopBar from '../components/TopBar';
 import InputForm from '../components/InputForm';
 import ToDoBox from '../components/ToDoBox';
 
-const ToDoList = () => {
+const Home = () => {
   return (
     <Container>
       <TopBar />
@@ -14,4 +14,4 @@ const ToDoList = () => {
   );
 };
 
-export default ToDoList;
+export default Home;
