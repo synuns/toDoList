@@ -48,7 +48,6 @@ function InputForm() {
   };
 
   const handleCreate = () => {
-    // TODO createdBy with intl
     if (title && content) {
       const toDo = {
         id: nanoid(),

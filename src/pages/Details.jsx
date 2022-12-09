@@ -73,8 +73,10 @@ const Details = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const param = useParams();
-  const toDos = useSelector((state) => state.toDoList);
-  const toDo = toDos.find((toDo) => toDo.id === param.id);
+
+  const toDo = useSelector((state) => state.toDoList).find(
+    (toDo) => toDo.id === param.id,
+  );
 
   const handleGoBack = () => {
     navigate(-1);
