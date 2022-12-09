@@ -1,21 +1,7 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Layout from './common/Layout';
-import Details from './pages/Details';
-import ToDoList from './pages/ToDoList';
+import Router from './shared/Router';
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<ToDoList />} />
-          <Route path="details" element={<Details />} />
-          <Route path="details/:id" element={<Details />} />
-        </Routes>
-      </Layout>
-    </BrowserRouter>
-  );
+  return <Router />;
 }
 
 export default App;
