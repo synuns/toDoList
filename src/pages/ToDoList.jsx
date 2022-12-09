@@ -1,5 +1,5 @@
 import React from 'react';
-import Container from '../common/Container';
+import Container from '../components/common/Container';
 import TopBar from '../components/TopBar';
 import InputForm from '../components/InputForm';
 import ToDoBox from '../components/ToDoBox';

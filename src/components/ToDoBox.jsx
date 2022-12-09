@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Empty from './Empty';
 import ToDoCard from './ToDoCard';
-import Subtitle from '../common/Subtitle';
+import Subtitle from './common/Subtitle';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleToDo, deleteToDo } from '../redux/modules/toDoList';
 import BoxImage from '../assets/box.png';

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import Button from '../common/Button';
-import Input from '../common/Input';
+import Button from './common/Button';
+import Input from './common/Input';
 import { createToDo } from '../redux/modules/toDoList';
 import { nanoid } from 'nanoid';
 import { currentTime } from '../utils/date';

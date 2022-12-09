@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Layout from '../common/Layout';
+import Layout from '../components/common/Layout';
 import Details from '../pages/Details';
 import ToDoList from '../pages/ToDoList';
 
@@ -15,7 +15,7 @@ const Router = () => {
         </Routes>
       </Layout>
     </BrowserRouter>
-  )
-}
+  );
+};
 
 export default Router;
