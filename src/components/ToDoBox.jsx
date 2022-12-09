@@ -5,6 +5,8 @@ import ToDoCard from './ToDoCard';
 import Subtitle from '../common/Subtitle';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleToDo, deleteToDo } from '../redux/modules/toDoList';
+import BoxImage from '../assets/box.png';
+import LikeImage from '../assets/like.png';
 
 const StyledToDoBox = styled.div`
   display: flex;
@@ -50,7 +52,7 @@ const ToDoBox = () => {
           ))}
         </CardList>
       ) : (
-        <Empty>할 일을 작성해보세요!</Empty>
+        <Empty img={LikeImage}>할 일이 없어요</Empty>
       )}
       <Subtitle>😎Done😎</Subtitle>
       {finished.length !== 0 ? (
@@ -65,7 +67,7 @@ const ToDoBox = () => {
           ))}
         </CardList>
       ) : (
-        <Empty>완료한 일이 없어요</Empty>
+        <Empty img={BoxImage}>끝낸 일이 없어요</Empty>
       )}
     </StyledToDoBox>
   );

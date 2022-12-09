@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import EmptyIcon from '../assets/empty-box.png';
 
 const StyledEmpty = styled.div`
   display: flex;
@@ -22,10 +21,10 @@ const StyledEmpty = styled.div`
   }
 `;
 
-const Empty = ({ children }) => {
+const Empty = ({ img, children }) => {
   return (
     <StyledEmpty>
-      <img src={EmptyIcon} alt="No Data" />
+      <img src={img} alt="No Data" />
       <span className="text">{children}</span>
     </StyledEmpty>
   );
